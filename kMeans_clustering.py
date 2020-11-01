@@ -28,6 +28,7 @@ def calculate_kMeans(dPoints, k, randClust):
 ######################### sklearn_kMeans #####################################
 # Purpose:
 #   Use Sklearn cluster.KMeans to get clusters
+#   Use various parameter values and plot the clusters. 
 # Parameters:
 #   None
 # Returns:
@@ -39,14 +40,27 @@ def sklearn_kMeans():
     X = data[['A', 'B', 'C']]
     y = data['D']
     
+    # plot 1 - 2 clusters
     kMeans2_yPred = KMeans(n_clusters = 2, random_state = 0).fit_predict(X)
     
-    # Plot
     plt.figure(figsize = (12, 12))
     plt.scatter(X['A'], X['B'], c = kMeans2_yPred)
     plt.title('K = 2, columns (A, B)')
     plt.show()
     
+    # Plot 2 - 2 clusters
+    plt.figure(figsize = (12, 12))
+    plt.scatter(X['B'], X['C'], c = kMeans2_yPred)
+    plt.title('K = 2, columns (B, C)')
+    plt.show()
+    
+    # plot 3 - 3 clusters
+    kMeans3_yPred = KMeans(n_clusters = 3, random_state = 0).fit_predict(X)
+    
+    plt.figure(figsize = (12, 12))
+    plt.scatter(X['A'], X['C'], c = kMeans3_yPred)
+    plt.title('K = 3, columns (A, B)')
+    plt.show()
 
 def main():
     data = [[2, 10], [2, 5], [8, 4], [5, 8], [7, 5], [6, 4], [1, 2], [4, 9]]
